@@ -1,0 +1,22 @@
+PKG_CPPFLAGS = -DRCPP_USE_UNWIND_PROTECT -DRCPP_NO_RTTI -I.
+PKG_LIBS     = -L. -lwfaR
+
+ALIGNMENT_SRC  = $(wildcard alignment/*.c)
+ALIGNMENT_OBJ  = $(patsubst alignment/%.c,alignment/%.o,$(ALIGNMENT_SRC))
+BINDINGS_SRC   = $(wildcard bindings/cpp/*.cpp)
+BINDINGS_OBJ   = $(patsubst bindings/cpp/%.cpp,bindings/cpp/%.o,$(BINDINGS_SRC))
+SYSTEM_SRC     = $(wildcard system/*.c)
+SYSTEM_OBJ     = $(patsubst system/%.c,system/%.o,$(SYSTEM_SRC))
+UTILS_SRC      = $(wildcard utils/*.c)
+UTILS_OBJ      = $(patsubst utils/%.c,utils/%.o,$(UTILS_SRC))
+WAVEFRONT_SRC  = $(wildcard wavefront/*.c)
+WAVEFRONT_OBJ  = $(patsubst wavefront/%.c,wavefront/%.o,$(WAVEFRONT_SRC))
+
+$(SHLIB): libwfaR.a
+
+libwfaR.a: $(ALIGNMENT_OBJ) $(BINDINGS_OBJ) $(SYSTEM_OBJ) $(UTILS_OBJ) $(WAVEFRONT_OBJ)
+	$(AR) rcs $@ $^
+
+clean:
+	rm -f $(SHLIB) $(ALIGNMENT_OBJ) $(BINDINGS_OBJ) $(SYSTEM_OBJ) $(UTILS_OBJ) $(WAVEFRONT_OBJ) libwfaR.a
+
