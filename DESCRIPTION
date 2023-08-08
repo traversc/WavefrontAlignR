@@ -1,0 +1,18 @@
+Package: WavefrontAlignR
+Title: Bindings for Wavefront Alignment Algorithm
+Version: 0.1
+Date: 2023-8-8
+Authors@R: c(
+    person("Santiago", "Marco-sola", email = "santiagomsola@gmail.com", role = c("aut", "cre", "cph")))
+Maintainer: Santiago Marco-sola <santiagomsola@gmail.com>
+Description: Bindings for Wavefront Alignment Algorithm
+License: GPL-3
+Biarch: true
+Encoding: UTF-8
+Depends: R (>= 3.0.2)
+SystemRequirements: GNU make
+LinkingTo: 
+    Rcpp
+Imports: 
+    Rcpp
+RoxygenNote: 7.1.2

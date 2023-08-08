@@ -1,0 +1,4 @@
+importFrom(Rcpp,sourceCpp)
+importFrom(RcppParallel, RcppParallelLibs)
+useDynLib(WavefrontAlignR, .registration=TRUE)
+export("edit_dist_matrix")
